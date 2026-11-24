@@ -1,0 +1,13 @@
+[project]
+name = "oauth-playground-client"
+version = "0.1.0"
+description = "Cliente OAuth 2.0 para Google / OAuth Playground en Python nativo"
+requires-python = ">=3.8"
+dependencies = []            # runtime: SOLO librería estándar
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "coverage>=7"]   # opcional; los tests corren también con unittest
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
