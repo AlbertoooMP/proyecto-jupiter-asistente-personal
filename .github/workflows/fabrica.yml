@@ -1,0 +1,28 @@
+# Copia este archivo a tu proyecto (en .github/workflows/).
+name: Fábrica
+
+on:
+  issues:
+    types: [labeled]
+  issue_comment:
+    types: [created]
+
+jobs:
+  taller:
+    # Arranca al poner la etiqueta "fabrica", o con un comentario /aprobar de alguien con permisos.
+    if: >-
+      (github.event_name == 'issues' && github.event.label.name == 'fabrica') ||
+      (github.event_name == 'issue_comment' && !github.event.issue.pull_request &&
+       startsWith(github.event.comment.body, '/aprobar') &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    uses: AlbertoooMP/Factory/.github/workflows/taller.yml@main
+    with:
+      fabrica_repo: AlbertoooMP/Factory
+    secrets:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      FABRICA_REPO_TOKEN: ${{ secrets.FABRICA_REPO_TOKEN }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write

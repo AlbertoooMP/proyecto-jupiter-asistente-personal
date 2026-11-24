@@ -1,0 +1,30 @@
+# Configuración de la fábrica (repo AlbertoooMP/Factory) para este proyecto.
+nombre: proyecto-jupiter
+descripcion: >-
+  Proyecto Júpiter (TFM): asistente personal con IA generativa que construye una memoria
+  personal a partir de fuentes autorizadas (uso de apps, calendario, ubicación, texto, audio).
+  mobile-app/ es una app Expo (SDK 56, React Native, TypeScript, Android primero) y
+  backend/ es Python (cliente OAuth de Google y, más adelante, la API del asistente).
+
+comandos:
+  instalar: npm ci --prefix mobile-app --no-audit --no-fund && python -m pip install -q -r backend/requirements-dev.txt
+  verificar:
+    - npm --prefix mobile-app run typecheck
+    - python -m pytest backend -q
+
+convenciones: docs/CONVENCIONES.md
+
+presupuesto:
+  por_ejecucion_usd: 0.50
+
+modelos:
+  pequeno: gemini-flash-latest
+  grande: gemini-flash-latest
+
+precios:
+  gemini-flash-latest: { entrada: 1.5, salida: 9 }
+
+taller:
+  aprobacion_plan: siempre
+  reparaciones_max: 2
+  minutos_agente: 25

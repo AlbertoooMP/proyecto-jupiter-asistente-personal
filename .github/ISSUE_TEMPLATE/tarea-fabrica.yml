@@ -1,0 +1,31 @@
+name: Tarea para la fábrica
+description: Un encargo pequeño y claro que el Taller de código pueda implementar
+title: "[Tarea] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cuando la tarea esté lista, añade la etiqueta **fabrica**. La fábrica la revisará,
+        propondrá un plan y esperará tu `/aprobar` antes de tocar código.
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: Qué hay que conseguir y por qué.
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Qué debe pasar para darla por terminada. Uno por línea.
+      placeholder: |
+        - Al pulsar X se abre Y
+        - Si falla la red se muestra un aviso
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto (opcional)
+      description: Archivos implicados, decisiones ya tomadas, enlaces.
